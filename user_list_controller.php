@@ -5,7 +5,6 @@
  * Date: 23/06/2018 00:19
  * Description: Affiche la liste des utilisateurs actifs ou inactifs
  */
-echo 'test';
 
 include 'header_jquery.html';
 //New Page(...user_list_viewer...) et dans Page mettre include 'header_jquery.html';
