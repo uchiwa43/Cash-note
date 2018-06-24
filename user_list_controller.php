@@ -1,75 +1,39 @@
 <?php
 /**
  * Created by: Thomas DUPORT
- * Project: Cash Note
- * Date: 23/06/2018 00:19
- * Description: Affiche la liste des utilisateurs actifs ou inactifs
+ * Project: Cash-note
+ * Date: 24/06/2018 23:33
+ * Description:
  */
 
-echo "modif sur master";
+include_once ('class/UserList.php');
 
-include 'header_jquery.html';
-//New Page(...user_list_viewer...) et dans Page mettre include 'header_jquery.html';
-
-include 'connexion_db.php';
-//include user_list_model et dedans mettre include 'connexion_db.php';
-
-//on charge tout le contenu du template dans une page
-$page = file_get_contents('./template/user_list.html');
-
-///////////////////////////////////////DONNEES/////////////////////////////////////////////////
-//si dans l'url on a show_disabled=1 on est en mode "Utilisateurs désactivés"
-
-$message='';
-if(isset($_SESSION['message'])){
-    $message = $_SESSION['message'];
-    echo $message;
-};
-$_SESSION['message']='';
+//1)MODEL : requête de selection des membres
+$bdd = new Bdd();
+$query ="
+SELECT u.id, pseudo, mail, mot_de_passe, s.libelle as statut, e.libelle as etat
+FROM utilisateur u
+JOIN etat e ON u.id_etat = e.id
+JOIN statut s ON u.id_statut = s.id
+";
+$users = $bdd->querySelect($query);
+var_dump($users);
 
 
-$lien = "<a href='user_list_controller.php?show_disabled=1'>Voir les utilisateurs désactivés</a><br/>";
-if(isset($_GET['show_disabled']) && $_GET['show_disabled']==1)
-{
-    $lien = "<a href='user_list_controller.php'>Voir les utilisateurs actifs</a><br/>";
-}
+//2)VIEW: chargement du template
+$liste_utilisateur = new UserList('./template/user_list_view.html');
 
 
-//lignes tr du tableau
-$tr = "";
+//3)CONTROLLER remplacement des données
+//$_SESSION['message']='je suis un message';
+$message = $liste_utilisateur->getMessage();
 
-$query = "SELECT id,prenom,nom FROM utilisateur where id_etat=1"; //utilisateurs actifs
-if(isset($_GET['show_disabled']) && $_GET['show_disabled']==1)
-{
-    $query = "SELECT id,prenom,nom FROM utilisateur where id_etat=2"; //utilisateurs désactivés
-}
+$lignes_utilisateurs = $liste_utilisateur->remplirLignesUtilisateurs($users);
 
-//exécution de la requête
-$reponse = $bdd->query($query);
-//tant qu'on a des utilisateurs :
-while($user = $reponse->fetch(PDO::FETCH_ASSOC) )
-{
-    //créer une ligne pour un utilisateur
-    $tr.= "
-        <tr>
-            <td>".$user['id']."</td>
-            <td>".$user['nom']."</td>
-            <td>".$user['prenom']."</td>
-            <td><a href='user_form_update.php?id=".$user['id']."' >Modifier</a></td>";
-            if(isset($_GET['show_disabled']) && $_GET['show_disabled']==1)
-            {
-                $tr.="<td><a>Activer</a></td>";
-            }else{
-                $tr.="<td><a href='user_action_disable.php?id=".$user['id']."'>Désactiver</a></td>";
-            }
-        $tr.="</tr>";
-}
-///////////////////////////////////////FIN DONNEES/////////////////////////////////////////////////
+$liste_utilisateur->replaceBalise("#message#", $message);
 
-//on remplace les balises du template par les données
-$page= str_replace("#message#", $message, $page);
-$page= str_replace("#lien#", $lien, $page);
-$page= str_replace("#tr#", $tr, $page);
+$liste_utilisateur->replaceBalise("#lignes_utilisateurs#", $lignes_utilisateurs);
 
-//on affiche la page
-echo $page;
+
+//4) Affichage :
+echo $liste_utilisateur->getHtml();
