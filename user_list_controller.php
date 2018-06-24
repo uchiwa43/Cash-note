@@ -6,7 +6,7 @@
  * Description: Affiche la liste des utilisateurs actifs ou inactifs
  */
 
-echo "modif sur dev";
+echo "modif sur master";
 
 include 'header_jquery.html';
 //New Page(...user_list_viewer...) et dans Page mettre include 'header_jquery.html';
