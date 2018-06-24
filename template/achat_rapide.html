@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout rapide d'achat</title>
+</head>
+<body>
+    <h1>Ajout rapide d'achat</h1>
+
+    <a href="liste_achat.html">Retour</a>
+
+    <form>
+        <label>Achat : </label>
+        <select name="achat">
+            <option value="1">Essence</option>
+            <option value="2">Telephone</option>
+            <option value="3">Banque Caisse d'épargne</option>
+            <option value="4">Assurance Macif?</option>
+            <option value="5">Train Aurec Chateaucreux</option>
+        </select><br/>
+
+        <label>Date d'achat prévue (début) : </label><input type="date" name="date_achat_prevue_debut"/><br/>
+        <label>Date d'achat prévue (fin) : </label><input type="date" name="date_achat_prevue_fin"/><br/>
+        <label>Prix prévu : </label><input type="text" name="valeur_prevue"/><br/>
+        <label>Quantité (condition) : </label><input type="text" name="quantité"/><br/>
+
+        <input type="submit"/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Achats</title>
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <!--Plugin DataTable-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );
+    </script>
+</head>
+<body>
+    <h1>Achats</h1>
+
+    <a href="menu_main.html">Retour</a>
+
+    <div id="recherche" style="text-align:right">
+        <form>
+
+            Filtrer pour le calcul total :<br/>
+
+            <div id="bloc_date" style="display:inline-block;vertical-align:top;">
+                <input type="checkbox" name="is_date"/>
+                <label>Date d'achat:</label><br/>
+                <label>Début :</label><input type="date" name="date_debut"/><br/>
+                <label>Fin :</label><input type="date" name="date_fin"/><br/>
+            </div>
+
+            <div id="bloc_categorie" style="display:inline-block;vertical-align:top;" >
+                <input type="checkbox" name="is_categorie"/>
+                <label>Categorie :</label><br/>
+                <select name="categorie">
+                    <option value="1">Obligatoire</option>
+                    <option value="2">Essence</option>
+                    <option value="3">Voiture</option>
+                    <option value="4">Manga</option>
+                    <option value="5">Ciné</option>
+                </select>
+            </div>
+
+            <div id="bloc_type" style="display:inline-block;vertical-align:top;" >
+                <input type="checkbox" name="is_type"/>
+                <label>Type :</label><br/>
+                <select name="type">
+                    <option value="1">Obligatoire</option>
+                    <option value="2">Loisir</option>
+                </select>
+            </div>
+
+            <div id="bloc_lieu" style="display:inline-block;vertical-align:top;">
+                <input type="checkbox" name="is_lieu"/>
+                <label>Libellé :</label><br/>
+                <select name="lieu">
+                    <option value="1">Centre 2 - Saint-Etienne</option>
+                    <option value="2">DBDH - Saint-Etienne</option>
+                </select>
+            </div>
+
+            <br/>
+
+            <input type="submit">
+        </form>
+    </div>
+
+
+
+    <div id="donnees">
+        <div id="total" style="display:inline-block;">Total : 430€ </div>
+        <div id="boutons_ajout" style="display:inline-block;">
+            <a href="achat.html">Ajout Achat</a><br>
+            <a href="achat_rapide.html">Ajout rapide</a>
+        </div>
+        <br>
+
+        <table id="table_id" class="display">
+            <thead>
+                <td></td>
+                <td>Libelle</td>
+                <td>Catégorie</td>
+                <td>Etat</td>
+                <td>Prix Réel/<br/>Prix prévu</td>
+                <td>Moyen de<br/>payement</td>
+                <td>Date d'achat<br/>Date de débit</td>
+                <td>Lieu</td>
+                <td>Achat sur<br/>internet?</td>
+            </thead>
+
+
+            <tr>
+                <td><a href="achat_detail.html">Voir détail</a></td>
+                <td>SP95</td>
+                <td>Essence</td>
+                <td>Prévu</td>
+                <td style="color:green">44/45 €</td>
+                <td>CB</td>
+                <td>2018-03-26<br/><span style="font-weight: bold;color:red">Date de débit manquante</span></td>
+                <td>Leclerc<br/>Firminy</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><a href="">Voir détail</a></td>
+                <td>Cartes Sifr + MP17</td>
+                <td>Yu-Gi-Oh</td>
+                <td>Effectué</td>
+                <td style="color:red">8/6 €</td>
+                <td>Paypal</td>
+                <td><span style="color:red">2018-03-24</span><br/>2018-03-26</td>
+                <td>Chez moi<br/>Aurec-sur-loire</td>
+                <td><a href="https://www.cardmarket.com/fr/YuGiOh/MainPage/showShipment?idShipment=56654185" target="_blank">Oui</a></td>
+            </tr>
+            <tr>
+                <td><a href="">Voir détail</a></td>
+                <td>Boosters</td>
+                <td>Yu-Gi-Oh</td>
+                <td>Prévu</td>
+                <td>13.5/13.5 €</td>
+                <td>Liquide</td>
+                <td><span style="color:green">2018-03-24</span></td>
+                <td>La taverne du Gobelin Farci<br/>Saint-étienne<br/>Bellevue</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+body{
+    /*background-color:yellow;*/
+    margin: 0;
+    padding:0;
+}
+
+.bloc_menu {
+    display: inline-block;
+    width: 49.7%;
+
+    color: white;
+    font-family: "DejaVu Sans";
+    text-align: center;
+}
+.bloc_main{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.bloc_secondary{
+    padding-top: 97px;
+    padding-bottom: 97px;
+}
+.color1{
+    background-color: green;
+}
+.color2 {
+    background-color: red;
+
+}
+.color3{
+    background-color: blue;
+}
+.color0{
+    background-color: white;
+    color:black !important;
+}
+
+/****************************************/
+.bloc_mois{
+    display: inline-block;
+    border : black solid 1px;
+    text-align: center;
+    margin-left:5px;
+    padding:5px;
+}
+
+section{
+    margin-bottom: 100px;
+}
+#limites .bloc_mois input{
+    width: 25px;
+}
+
+/****************************************/
+label {
+    font-weight: bold;
+}

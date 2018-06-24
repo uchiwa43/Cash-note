@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tirelire</title>
+    <!--Jquery-->
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <!--Plugin DataTable-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+        } );
+    </script>
+</head>
+<body>
+    <h1>Tirelire</h1>
+
+    <a href="menu_main.html">Retour</a><br/>
+    <button><-</button>
+    <img src="..\..\3) Maquettes\Tirelire\Capture_sheets.PNG"/>
+    <button>-></button>
+    <br/>
+
+    <a href="tirelire.html">Ajouter une ligne tirelire</a><br/>
+
+    <table id="table_id" class="display">
+        <thead>
+        <tr>
+            <td></td>
+            <td>Date</td>
+            <td>Argent total</td>
+            <td>Liquide</td>
+            <td>Compte courant</td>
+            <td>Livret Jeune</td>
+            <td>Livret A</td>
+            <td>Valeur <br/>chèques <br/>déjeuner</td>
+
+            <td>Progression <br/>achats <br/>totale</td>
+            <td>Progression <br/>achats <br/>obligatoire</td>
+            <td>Progression <br/>achats <br/>loisir</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td><a href="tirelire.html">Modifier</a></td>
+            <td>2018-05-01</td>
+
+            <td>2600€</td>
+            <td>40€</td>
+            <td>400€</td>
+            <td>1600€</td>
+            <td>570€</td>
+            <td>100€</td>
+
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+        </tr>
+        <tr>
+            <td><a href="tirelire.html">Modifier</a></td>
+            <td>2018-04-01</td>
+
+            <td>1900€</td>
+            <td>10€</td>
+            <td>390€</td>
+            <td>1500€</td>
+            <td>0€</td>
+            <td>100€</td>
+
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

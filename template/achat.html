@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter/Modifier achat</title>
+</head>
+<body>
+    <h1>Ajouter/Modifier achat</h1>
+
+    <a href="liste_achat.html">Retour</a>
+
+    <form>
+        <label>Libellé : </label><input type="text" name="libelle" /><br/>
+
+        <label>Catégorie : </label>
+        <select name="categorie">
+            <option value="1">AutreO</option>
+            <option value="2">Essence</option>
+        </select><br/>
+
+        <label>Etat : </label>
+        <select name="etat">
+            <option value="1">Effectué</option>
+            <option value="2">Prévu</option>
+            <option value="0">Supprimé</option>
+        </select><br/>
+
+        <label>Moyen de payement : </label>
+        <select name="moyen_payement">
+            <option value="1">Carte bancaire</option>
+            <option value="2">Liquide</option>
+        </select><br/>
+
+        <label>Prix d'achat réel : </label><input type="text" name="valeur_reelle"/><br/>
+        <label>Prix d'achat prévu : </label><input type="text" name="valeur_prevue"/><br/>
+
+        <label>Date d'achat réelle : </label><input type="date" name="date_achat_reelle"/><br/>
+        <label>Date de sortie : </label><input type="date" name="date_sortie"/><br/>
+        <label>Date d'achat prévue (début) : </label><input type="date" name="date_achat_prevue_debut"/><br/>
+        <label>Date d'achat prévue (fin) : </label><input type="text" name="date_achat_prevue_fin" /><br/>
+
+        <label>Lieu : </label>
+        <select name="Lieu">
+            <option value="1">Centre 2 - Saint-étienne - Bellevue</option>
+            <option value="2">Des Bulles et des hommes - Saint-étienne - Bellevue</option>
+            <option value="3">Chez lucile (père) - Saint-étienne - Saint-francois</option>
+        </select><br/>
+
+        <label>Commentaire : </label>
+        <textarea name="commentaire"></textarea><br/>
+
+        <label>Quantité : </label><input type="text" name="quantité"/><br/>
+        <label>Prix à l'unité (condition) :</label><input type="text" name="prix_unite"/><br/>
+
+        <br/>
+
+        <fieldset>
+            <legend>Achat par intenet</legend>
+
+            <label>Nom du site internet : </label>
+            <select name="site_internet">
+                <option value="1">YuGiOh CardMarket</option>
+                <option value="2">Amazon</option>
+                <option value="3">Cool anime stuff</option>
+            </select><br/>
+            <label>Adresse URL du produit (condition) : </label><input type="text" name="url_produit"/><br/>
+
+            <label>Date d'envoi (condition) : </label><input type="date" name="date_envoi"/><br/>
+            <label>Periode réception prévue (condition) : </label><input type="text" name="periode_reception_prevue"/><br/>
+            <label>Date de reception (condition) : </label><input type="date" name="date_reception"/><br/>
+            <label>Durée du transport (condition) : </label><input type="text" name="duree"/><br/>
+        </fieldset>
+        <br/>
+
+        <fieldset>
+            <legend>Payement non liquide</legend>
+            <label>Date de débit : </label><input type="date" name="date_debit"/>
+        </fieldset>
+        <br/>
+
+        <fieldset>
+            <legend>Essence</legend>
+            <label>Nombre de kilomètes parcourus (condition) : </label><input type="text" name="date_debit"/>
+        </fieldset>
+        <br/>
+
+        <input type="submit"/>
+    </form>
+</body>
+</html>

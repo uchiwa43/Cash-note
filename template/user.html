@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <title>Utilisateur</title>
+    <link rel="stylesheet" href=""/>
+</head>
+
+<body>
+
+    <h1>Utilisateur</h1>
+
+    <form method="POST">
+        <label>Pseudo :</label><input type="text" name="pseudo" required/><br/><br/>
+
+        <label>Statut :</label>
+        <select name="statut">
+            <option>Administrateur</option>
+            <option>Utilisateur</option>
+        </select><br/><br/>
+
+        <label>Adresse mail:</label><input type="email" name="mail"/><br/><br/>
+
+        <label>Mot-de-passe :</label><input type="text" name="mot_de_passe" required/><br/><br/>
+
+        <label>Etat :</label>
+        <select name="etat">
+            <option>Actif</option>
+            <option>Désactivé</option>
+        </select><br/><br/>
+
+        <input type="submit"/>
+    </form>
+</body>
+</html>
