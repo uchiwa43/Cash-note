@@ -8,7 +8,7 @@
 
 include_once('class/Page.php');
 
-$page = new Page("./template/user_list.html");
+$page = new Page("./template/user_list_view.html");
 
 $message ="l'utilisateur a bien été ajouté";
 $page->replaceBalise('#message#', $message);

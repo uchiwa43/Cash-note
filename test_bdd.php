@@ -8,6 +8,10 @@
 include_once('class/Bdd.php');
 $bdd = new Bdd();
 
-$array_sql = $bdd->querySelect('SELECT * FROM lieu WHERE id_ville=5');
+$query ="SELECT * 
+    FROM lieu 
+    WHERE id_ville=4";
+
+$array_sql = $bdd->querySelect($query);
 echo "tableau sql :";
 var_dump($array_sql);
