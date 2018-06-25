@@ -42,5 +42,21 @@ class Page
         $this->html = str_replace($balise,$content,$this->html);
     }
 
+    public function setSelect($array_sql, $label, $name, $balise)
+    {
+        $html = "
+        <label>$label :</label>
+        <select name='$name'>";
+
+        foreach ($array_sql as $enregistrement)
+        {
+            $html .= "<option value='".$enregistrement['id']."'>" . $enregistrement['libelle'] . "</option>";
+        }
+
+        $html .= '
+        </select><br/><br/>';
+
+        $this->replaceBalise($balise, $html);
+    }
 
 }

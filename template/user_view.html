@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <title>Utilisateur</title>
+    <link rel="stylesheet" href=""/>
+</head>
+
+<body>
+
+    <div>
+        <a href="user_list_controller.php">Retour</a>
+    </div>
+
+    <h1>Utilisateur</h1>
+
+    <form method="POST">
+        <label>Pseudo :</label><input type="text" name="pseudo" value="#value_pseudo#" required/><br/><br/>
+
+        #statuts#
+
+        <label>Adresse mail:</label><input type="email" name="mail" value="#value_mail#" /><br/><br/>
+
+        <label>Mot-de-passe :</label><input type="text" name="mot_de_passe" value="#value_mdp#" required/><br/><br/>
+
+        #etats#
+
+        <input type="submit"/>
+    </form>
+</body>
+</html>

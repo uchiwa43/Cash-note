@@ -50,4 +50,29 @@ class Bdd
         }
 
     }
+
+
+    function queryMonoSelect($query)
+    {
+        $array_sql=[];
+        $reponse = $this->lien->query($query);
+
+        while($ligne = $reponse->fetch(PDO::FETCH_ASSOC))
+        {
+            $array_sql[]= $ligne ;
+            //echo "Ligne :";
+            //var_dump($ligne);
+        }
+
+        $array_one = $array_sql[0];
+
+        if(!empty($array_one))
+        {
+            return $array_one;
+        }else{
+            return "La requête n'a renvoyé aucun résultat";
+        }
+
+    }
+
 }
