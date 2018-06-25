@@ -8,19 +8,25 @@
 
 include_once ('class/Page.php');
 include_once ('Bdd.php');
+$bdd = new Bdd();
 include_once ('template/header_jquery.html');
 
 class UserList extends Page
 {
-    //
-    protected $listHtml;
-
-    function __construct($template)
+    /**
+     * UserList constructor.
+     * @param $template
+     */
+    public function __construct($html_template)
     {
-        parent::__construct($template);
+        parent::__construct($html_template);
     }
 
-    function remplirLignesUtilisateurs($users)
+    /**
+     * @param $users
+     * @return string
+     */
+    public function remplirLignesUtilisateurs($users)
     {
         //lignes tr du tableau
         $lignes_utilisateur = "";
@@ -34,20 +40,23 @@ class UserList extends Page
                 <td>".$user['mail']."</td>
                 <td>".$user['mot_de_passe']."</td>
                 <td>".$user['etat']."</td>
-                <td><a href='user_form_update.php?id=".$user['id']."' >Modifier</a></td>";
+                <td><a href='user_controller.php?id=".$user['id']."' >Modifier</a></td>";
             $lignes_utilisateur.="</tr>";
 
         }
         return $lignes_utilisateur;
     }
 
-    function getMessage()
+    /**
+     * @return string
+     */
+    public function getMessage()
     {
         $message='';
         if(isset($_SESSION['message'])){
             $message = $_SESSION['message'];
         };
-        $_SESSION['message']='';
+        unset($_SESSION['message']);
 
         return $message;
     }
