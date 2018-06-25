@@ -6,10 +6,15 @@
  * Description:
  */
 
+session_start();
+unset($_SESSION['id']);
+echo "session:";
+var_dump($_SESSION);
+
 include_once ('class/UserList.php');
 
 //1)MODEL : requête de selection des membres
-$bdd = new Bdd();
+
 $query ="
 SELECT u.id, pseudo, mail, mot_de_passe, s.libelle as statut, e.libelle as etat
 FROM utilisateur u
@@ -17,7 +22,7 @@ JOIN etat e ON u.id_etat = e.id
 JOIN statut s ON u.id_statut = s.id
 ";
 $users = $bdd->querySelect($query);
-var_dump($users);
+//var_dump($users);
 
 
 //2)VIEW: chargement du template

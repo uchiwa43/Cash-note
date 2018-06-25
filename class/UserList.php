@@ -8,22 +8,18 @@
 
 include_once ('class/Page.php');
 include_once ('Bdd.php');
+$bdd = new Bdd();
 include_once ('template/header_jquery.html');
 
 class UserList extends Page
 {
     /**
-     * @var
-     */
-    protected $listHtml;
-
-    /**
      * UserList constructor.
      * @param $template
      */
-    public function __construct($template)
+    public function __construct($html_template)
     {
-        parent::__construct($template);
+        parent::__construct($html_template);
     }
 
     /**
@@ -60,7 +56,7 @@ class UserList extends Page
         if(isset($_SESSION['message'])){
             $message = $_SESSION['message'];
         };
-        $_SESSION['message']='';
+        unset($_SESSION['message']);
 
         return $message;
     }
