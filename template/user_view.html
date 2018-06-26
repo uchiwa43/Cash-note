@@ -19,13 +19,16 @@
     <h1>Utilisateur</h1>
 
     <form method="POST" action="user_check_controller.php">
-        <label>Pseudo :</label><input type="text" name="pseudo" value="#value_pseudo#" required/><br/><br/>
+        <label>Pseudo :</label>
+        <input type="text" name="pseudo" value="#pseudo_value#" required/><br/><br/>
+
+        <label>Mot-de-passe :</label>
+        <input type="text" name="password" value="#password_value#" required/><br/><br/>
+
+        <label>Adresse mail:</label>
+        <input type="email" name="mail" value="#mail_value#" /><br/><br/>
 
         #statuts#
-
-        <label>Adresse mail:</label><input type="email" name="mail" value="#value_mail#" /><br/><br/>
-
-        <label>Mot-de-passe :</label><input type="text" name="mot_de_passe" value="#value_mdp#" required/><br/><br/>
 
         #etats#
 

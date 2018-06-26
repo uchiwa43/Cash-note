@@ -39,21 +39,23 @@ if(isset($_SESSION['id']))
 {
     $page_user->replaceBalise("#titre#","Modification d'un utilisateur");
 
-    //remplacer la balise par la valeur en session si elle existe, sinon par la valeur de la requête sql
-    $page_user->setInputValue("#value_pseudo#", 'pseudo', $user['pseudo']);
+    //champs text
+    $page_user->setPseudoValue($user['pseudo']);
+    $page_user->setMailValue($user['mail']);
+    $page_user->setPasswordValue($user['mot_de_passe']);
+    //champs select
     $page_user->setStatut($statuts, $user['id_statut']);
-    $page_user->setInputValue("#value_mail#", 'mail', $user['mail']);
-    $page_user->setInputValue("#value_mdp#", 'mot_de_passe', $user['mot_de_passe']);
     $page_user->setEtat($etats,$user['id_etat']);
 
 }else{
     $page_user->replaceBalise("#titre#","Création d'un utilisateur");
 
-    //remplacer la balise par la valeur en session si elle existe, sinon par ""
-    $page_user->setInputValue("#value_pseudo#", 'pseudo', "");
+    //champs text
+    $page_user->setPseudoValue("");
+    $page_user->setMailValue("");
+    $page_user->setPasswordValue("");
+    //champs select
     $page_user->setStatut($statuts, null);
-    $page_user->setInputValue("#value_mail#", 'mail', "");
-    $page_user->setInputValue("#value_mdp#", 'mot_de_passe', "");
     $page_user->setEtat($etats,null);
 }
 if(isset($_SESSION['message'])){

@@ -54,13 +54,13 @@ class Page
      * @param string $var_in_session Valeur en session
      * @param string $default "" ou valeur d'un resultat de requête
      */
-    public function setInputValue($balise, $var_in_session, $default)
+    public function setInputValue($balise, $var_in_session, $init_value)
     {
         if (isset($_SESSION[$var_in_session]))
         {
             $this->replaceBalise($balise, $_SESSION[$var_in_session]);
         }else{
-            $this->replaceBalise($balise, $default);
+            $this->replaceBalise($balise, $init_value);
         }
     }
 
