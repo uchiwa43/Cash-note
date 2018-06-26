@@ -3,21 +3,17 @@
  * Created by: Thomas DUPORT
  * Project: Cash-note
  * Date: 24/06/2018 23:30
- * Description:
+ * Description: Classe utilisé par le user_list_controller.php
+ * pour remplir la liste d'utilisateurs dans user_list_view.html
  */
 
-include_once ('class/Page.php');
-include_once ('class/Bdd.php');
+include_once ('./class/Page.php');
+include_once ('./class/Bdd.php');
 $bdd = new Bdd();
 include_once ('template/header_jquery.html');
 
 class UserList extends Page
 {
-    /**
-     * @var
-     */
-    protected $listHtml;
-
     /**
      * UserList constructor.
      * @param $template
@@ -28,8 +24,9 @@ class UserList extends Page
     }
 
     /**
-     * @param $users
-     * @return string
+     * remplit chaque ligne du tableau avec les informations de la table utilisateur
+     * @param array $users Tableau de données provenant de la base de données
+     * @return string Code HTML
      */
     public function remplirLignesUtilisateurs($users)
     {
@@ -46,24 +43,11 @@ class UserList extends Page
                 <td>".$user['mot_de_passe']."</td>
                 <td>".$user['etat']."</td>
                 <td><a href='user_controller.php?id=".$user['id']."' >Modifier</a></td>";
-            $lignes_utilisateur.="</tr>";
+            $lignes_utilisateur .= "
+            </tr>";
 
         }
         return $lignes_utilisateur;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMessage()
-    {
-        $message='';
-        if(isset($_SESSION['message'])){
-            $message = $_SESSION['message'];
-        };
-        $_SESSION['message']='';
-
-        return $message;
     }
 
 }

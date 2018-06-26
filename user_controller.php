@@ -14,17 +14,17 @@ if(isset($_GET['id']))
 {
     $_SESSION['id'] = $_GET['id'];
 }
-echo "session:<br>"; var_dump($_SESSION); echo "<br><br/>";
+//echo "session:<br>"; var_dump($_SESSION); echo "<br><br/>";
 
 
 
 //1)MODEL : requête de selection des membres
-$etats  = $bdd->querySelect('SELECT * FROM etat');
-$statuts  = $bdd->querySelect('SELECT * FROM statut');
+$etats = $bdd->select('SELECT * FROM etat');
+$statuts = $bdd->select('SELECT * FROM statut');
 
 if(isset($_SESSION['id']))
 {
-    $user = $bdd->queryMonoSelect('SELECT * FROM utilisateur WHERE id='.$_SESSION['id']);
+    $user = $bdd->selectOneLine('SELECT * FROM utilisateur WHERE id='.$_SESSION['id']);
 }
 
 
@@ -35,6 +35,9 @@ $page_user = new User('./template/user_view.html');
 
 
 //3)CONTROLLER remplacement des données
+$message = $page_user->getMessage();
+$page_user->replaceBalise("#message#",$message);
+
 if(isset($_SESSION['id']))
 {
     $page_user->replaceBalise("#titre#","Modification d'un utilisateur");
@@ -57,11 +60,6 @@ if(isset($_SESSION['id']))
     //champs select
     $page_user->setStatut($statuts, null);
     $page_user->setEtat($etats,null);
-}
-if(isset($_SESSION['message'])){
-    $page_user->replaceBalise("#message#",$_SESSION['message']);
-}else{
-    $page_user->replaceBalise("#message#","");
 }
 
 

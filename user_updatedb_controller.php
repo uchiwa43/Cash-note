@@ -18,7 +18,7 @@ $bdd = new Bdd();
 
 if (!isset($_SESSION['id']))
 {
-    $max_id = $bdd->querySelectMaxId("utilisateur");
+    $max_id = $bdd->selectMaxId("utilisateur");
     $id = $max_id+1;
 }
 
@@ -56,7 +56,7 @@ if (isset($_SESSION['id']))
     $result = $bdd->executeQuery($sql_update_user);
 
     if ($result ==1 ) {
-        $_SESSION['message']="modification de l'utilisateur $pseudo effectuée";
+        $_SESSION['message'] = "modification de l'utilisateur $pseudo effectuée";
     }
 
 }else{
@@ -72,7 +72,7 @@ if (isset($_SESSION['id']))
     $result = $bdd->executeQuery($sql_insert_user);
 
     if ($result ==1 ) {
-        $_SESSION['message']="création de l'utilisateur $pseudo effectuée";
+        $_SESSION['message'] = "création de l'utilisateur $pseudo effectuée";
     }
 }
 

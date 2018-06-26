@@ -23,15 +23,14 @@ class Bdd
         $username = 'root';
         $password = '';
         $this->lien = new PDO($dsn,$username,$password);
-        //echo "<div class='BDD'>La connection à la base a bien été faite</div>";
     }
 
     /**
-     * Exécute une requête SELECT sur la base
-     * @param string $query
-     * @return array|string
+     * Exécute une requête SELECT pour plusieurs lignes sur la base
+     * @param string $query Requête SQL
+     * @return array|string Tableau de résultats ou message d'erreur
      */
-    function querySelect($query)
+    function select($query)
     {
         $array_sql=[];
         $reponse = $this->lien->query($query);
@@ -39,8 +38,6 @@ class Bdd
         while($ligne = $reponse->fetch(PDO::FETCH_ASSOC))
         {
             $array_sql[]= $ligne ;
-            //echo "Ligne :";
-            //var_dump($ligne);
         }
         if(!empty($array_sql))
         {
@@ -51,8 +48,12 @@ class Bdd
 
     }
 
-
-    function queryMonoSelect($query)
+    /**
+     * Exécute une requête SELECT pour une seule lignes sur la base
+     * @param string $query Requête SQL
+     * @return mixed|string Tableau de résultats ou message d'erreur
+     */
+    function selectOneLine($query)
     {
         $array_sql=[];
         $reponse = $this->lien->query($query);
@@ -60,8 +61,6 @@ class Bdd
         while($ligne = $reponse->fetch(PDO::FETCH_ASSOC))
         {
             $array_sql[]= $ligne ;
-            //echo "Ligne :";
-            //var_dump($ligne);
         }
 
         $array_one = $array_sql[0];
@@ -76,11 +75,12 @@ class Bdd
     }
 
     /**
-     * renvoie le plus grand id de la table demandée
-     * @param string $table
-     * @return int
+     * Renvoie le plus grand id de la table demandée
+     * (attention il faudra ajouter +1 pour obtenir l'id pour l'insertion)
+     * @param string $table Nom de la table
+     * @return int Le plus grand id de cette table
      */
-    public function querySelectMaxId($table)
+    public function selectMaxId($table)
     {
         $sql_one_data = "SELECT MAX(id) as max_id FROM $table";
 
@@ -91,8 +91,8 @@ class Bdd
     }
 
     /**Execute une requête INSERT, UPDATE ou DELETE sur la base de données
-     * @param $sql_insert
-     * @return int
+     * @param string $sql_insert Requête SQL
+     * @return int nombre de lignes impactées
      */
     public function executeQuery($sql_insert)
     {
