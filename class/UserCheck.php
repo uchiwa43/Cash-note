@@ -26,7 +26,7 @@ class UserCheck extends Page
     }
     public function checkPassword()
     {
-        $bool_verif = $this->checkInputText('mot_de_passe');
+        $bool_verif = $this->checkInputText('password');
         return $bool_verif;
     }
 
