@@ -23,7 +23,7 @@ class Bdd
         $username = 'root';
         $password = '';
         $this->lien = new PDO($dsn,$username,$password);
-        echo "<div class='BDD'>La connection à la base a bien été faite</div>";
+        //echo "<div class='BDD'>La connection à la base a bien été faite</div>";
     }
 
     /**
@@ -74,5 +74,31 @@ class Bdd
         }
 
     }
+
+    /**
+     * renvoie le plus grand id de la table demandée
+     * @param string $table
+     * @return int
+     */
+    public function querySelectMaxId($table)
+    {
+        $sql_one_data = "SELECT MAX(id) as max_id FROM $table";
+
+        $reponse = $this->lien->query($sql_one_data);
+        $array = $reponse->fetch(PDO::FETCH_ASSOC);
+
+        return intval($array['max_id']);
+    }
+
+    /**Execute une requête INSERT, UPDATE ou DELETE sur la base de données
+     * @param $sql_insert
+     * @return int
+     */
+    public function executeQuery($sql_insert)
+    {
+        $debug = $this->lien->exec($sql_insert);
+        return $debug;
+    }
+
 
 }
