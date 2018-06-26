@@ -75,7 +75,7 @@ class UserCheck extends Page
         }else{ //si au moins un champs est incorrect
 
             //mettre ce message en session pour l'afficher sur le formulaire
-            $_SESSION['message'] = "il y a (au moins) une erreur dans le formulaire";
+            $_SESSION['message'] = "Il y a (au moins) une erreur dans le formulaire";
             echo $_SESSION['message'];
 
             //redirection vers le formulaire

@@ -22,13 +22,13 @@ class User extends Page
         parent::__construct($html_template);
     }
 
-    public function setEtat($etats)
+    public function setEtat($etats, $id_etat)
     {
-        parent::setSelect($etats, "Etat", "etat","#etats#");
+        parent::setSelect($etats,"Etat", "etat","#etats#", $id_etat);
     }
 
-    public function setStatut($statuts)
+    public function setStatut($statuts, $id_statut)
     {
-        $options = parent::setSelect($statuts,"Statut","statut","#statuts#");
+        parent::setSelect($statuts,"Statut","statut","#statuts#", $id_statut);
     }
 }

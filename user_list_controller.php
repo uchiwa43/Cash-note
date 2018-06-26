@@ -7,7 +7,18 @@
  */
 
 session_start();
-unset($_SESSION['id']);
+
+foreach($_SESSION as $var_session=>$value)
+{
+    //var_dump($var_session);
+    if ($var_session != 'message')
+    {
+        //echo "effacer";
+        unset($_SESSION[$var_session]);
+    }
+}
+unset($_SESSION['bdd_action']);
+
 echo "session:";
 var_dump($_SESSION);
 
