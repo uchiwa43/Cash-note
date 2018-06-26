@@ -56,20 +56,18 @@ class UserCheck extends Page
             {
                 //Modification
                 $_SESSION['message'] .= ", Modification";
-                $_SESSION['bdd_action'] = "update";
                 echo "Session : ";var_dump($_SESSION);
 
                 //Redirection pour faire la requête UPDATE
-                //header('Location: user_updatedb_controller.php');
+                header('Location: user_updatedb_controller.php');
 
             }else{
                 //Creation
                 $_SESSION['message'] .= ", Création";
-                $_SESSION['bdd_action'] = "insert";
                 echo "Session : ";var_dump($_SESSION);
 
                 //Redirection pour faire la requête INSERT
-                //header('Location: user_updatedb_controller.php');
+                header('Location: user_updatedb_controller.php');
             }
 
         }else{ //si au moins un champs est incorrect

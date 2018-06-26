@@ -19,8 +19,7 @@ foreach($_SESSION as $var_session=>$value)
 }
 unset($_SESSION['bdd_action']);
 
-echo "session:";
-var_dump($_SESSION);
+//echo "session:";var_dump($_SESSION);
 
 include_once ('class/UserList.php');
 

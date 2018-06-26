@@ -119,6 +119,7 @@ class Page
             echo "Erreur champ $name<br/>";
             return false;
         }
+
     }
 
     public function checkSelect($name,$limit)
