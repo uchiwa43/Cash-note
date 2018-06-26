@@ -8,13 +8,17 @@
 
 <body>
 
-    <div>
+    <div id="message">
+        <h2><b>#message#</b></h2>
+    </div>
+
+    <div id="retour">
         <a href="user_list_controller.php">Retour</a>
     </div>
 
     <h1>Utilisateur</h1>
 
-    <form method="POST">
+    <form method="POST" action="user_check_controller.php">
         <label>Pseudo :</label><input type="text" name="pseudo" value="#value_pseudo#" required/><br/><br/>
 
         #statuts#
