@@ -45,15 +45,55 @@ class Page
         $this->html = str_replace($balise,$content,$this->html);
     }
 
-    public function setSelect($array_sql, $label, $name, $balise)
+    /**
+     * Met une valeur dans un input de type text :
+     * -soit la valeur en session si elle existe,
+     * -soit si c'est une modification par le résultat d'une requête sql
+     * -soit si c'est une creation par ""
+     * @param string $balise #value_...# dans la value d'un input
+     * @param string $var_in_session Valeur en session
+     * @param string $default "" ou valeur d'un resultat de requête
+     */
+    public function setInputValue($balise, $var_in_session, $default)
     {
+        if (isset($_SESSION[$var_in_session]))
+        {
+            $this->replaceBalise($balise, $_SESSION[$var_in_session]);
+        }else{
+            $this->replaceBalise($balise, $default);
+        }
+    }
+
+    /**Génère un select avec
+     * autant d'options que donné dans l'array de données qui proviens de la requête sql
+     * et l'option a selected si on le récupère en base
+     * @param $array_sql
+     * @param $label
+     * @param $name
+     * @param $balise
+     */
+    public function setSelect($array_sql ,$label, $name, $balise, $id_in_sql)
+    {
+
         $html = "
         <label>$label :</label>
         <select name=$name>";
 
+        if(isset($_SESSION[$name]))
+        {
+            $id_to_compare = $_SESSION[$name];
+        }else{
+            $id_to_compare = $id_in_sql;
+        }
+
         foreach ($array_sql as $enregistrement)
         {
-            $html .= "<option value='".$enregistrement['id']."'>" . $enregistrement['libelle'] . "</option>";
+            $selected='';
+            if ($enregistrement['id'] == $id_to_compare)
+            {
+                $selected = "selected";
+            }
+            $html .= "<option value='".$enregistrement['id']."' ". $selected .">" . $enregistrement['libelle'] . "</option>";
         }
 
         $html .= '
@@ -68,37 +108,30 @@ class Page
      */
     public function checkInputText($name)
     {
-        //TODO mettre dans la session PUIS vérifier
+        $_SESSION[$name] = strip_tags($_POST[$name]);
 
         if (strlen($_POST[$name]) >= 0 and strlen($_POST[$name]) < 50)
         {
-            $_SESSION[$name] = ucfirst(strip_tags($_POST[$name]));
             echo "Le champs $name est vérifié<br>";
-
-            //
             return true;
 
         }else{
             echo "Erreur champ $name<br/>";
-
             return false;
         }
     }
 
     public function checkSelect($name,$limit)
     {
-        //TODO mettre dans la session PUIS vérifier
+        $_SESSION[$name] = strip_tags($_POST[$name]);
 
         if ($_POST[$name] >= 0 and $_POST[$name] <= $limit )
         {
-            $_SESSION[$name] = $_POST[$name];
             echo "Le champs $name est vérifié<br>";
-
             return true;
         }
         else {
             echo "Erreur champs $name<br/>";
-
             return false;
         }
     }
