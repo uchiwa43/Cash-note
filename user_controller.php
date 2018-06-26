@@ -15,10 +15,9 @@ if(isset($_GET['id']))
     $_SESSION['id'] = $_GET['id'];
     //echo "id :".$_SESSION['id'];
 }
-echo "post:<br>";
-var_dump($_POST);
 echo "session:<br>";
-//var_dump($_SESSION);
+var_dump($_SESSION);
+echo "<br><br/>";
 
 //1)MODEL : requête de selection des membres
 if(isset($_SESSION['id']))
@@ -48,6 +47,8 @@ if(isset($_SESSION['id']))
 {
     $page_user->replaceBalise("#titre#","Modification d'un utilisateur");
 
+    //TODO si le champs existe dans la session : mettre le champ en session, sinon la requête
+
     $page_user->replaceBalise("#value_pseudo#", $user['pseudo']);
     $page_user->replaceBalise("#value_mail#", $user['mail']);
     $page_user->replaceBalise("#value_mdp#", $user['mot_de_passe']);
@@ -62,6 +63,12 @@ if(isset($_SESSION['id']))
     $page_user->replaceBalise("#value_mail#","");
     $page_user->replaceBalise("#value_mdp#","");
 }
+if(isset($_SESSION['message'])){
+    $page_user->replaceBalise("#message#",$_SESSION['message']);
+}else{
+    $page_user->replaceBalise("#message#","");
+}
+
 
 //4) Affichage :
 echo $page_user->getHtml();
