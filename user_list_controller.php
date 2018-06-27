@@ -7,7 +7,7 @@
  */
 
 session_start();
-include_once ('class/UserList.php');
+include_once ('class/User.php');
 
 //Supprimer toutes les variables de $_SESSION sauf le message
 foreach($_SESSION as $var_session=>$value)
@@ -32,7 +32,7 @@ $users = $bdd->select($query);
 
 
 //2)VIEW: chargement du template
-$page_user_list = new UserList('./template/user_list_view.html');
+$page_user_list = new User('./template/user_list_view.html');
 
 
 //3)CONTROLLER remplacement des données

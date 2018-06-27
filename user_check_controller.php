@@ -9,8 +9,8 @@
  */
 
 session_start();
-include_once ('./class/UserCheck.php');
-$user_check = new UserCheck();
+include_once ('./class/User.php');
+$user_check = new User();
 
 echo "POST:";
 var_dump($_POST);
@@ -22,7 +22,7 @@ $is_mail_verified = $user_check->checkMail();
 $is_password_verified = $user_check->checkPassword();
 
 //champs select
-$is_statut_verified = $user_check->checkStatut(4);
+$is_statut_verified = $user_check->checkStatut(2);
 $is_etat_verified = $user_check->checkEtat(4);
 
 
