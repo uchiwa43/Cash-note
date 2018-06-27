@@ -2,7 +2,7 @@
 <html lang="FR">
 <head>
     <meta charset="UTF-8">
-    <title>Utilisateur</title>
+    <title>#titre#</title>
     <link rel="stylesheet" href=""/>
 </head>
 
@@ -16,20 +16,24 @@
         <a href="user_list_controller.php">Retour</a>
     </div>
 
-    <h1>Utilisateur</h1>
+    <h1>#titre#</h1>
 
     <form method="POST" action="user_check_controller.php">
-        <label>Pseudo :</label><input type="text" name="pseudo" value="#value_pseudo#" required/><br/><br/>
+        <label>Pseudo :</label>
+        <input type="text" name="pseudo" value="#pseudo_value#" required/><br/><br/>
+
+        <label>Mot-de-passe :</label>
+        <input type="text" name="password" value="#password_value#" required/><br/><br/>
+
+        <label>Adresse mail:</label>
+        <input type="email" name="mail" value="#mail_value#" /><br/><br/>
 
         #statuts#
-
-        <label>Adresse mail:</label><input type="email" name="mail" value="#value_mail#" /><br/><br/>
-
-        <label>Mot-de-passe :</label><input type="text" name="mot_de_passe" value="#value_mdp#" required/><br/><br/>
 
         #etats#
 
         <input type="submit"/>
     </form>
+
 </body>
 </html>
