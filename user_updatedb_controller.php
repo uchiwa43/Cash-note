@@ -7,15 +7,11 @@
  */
 
 session_start();
-//include_once ('./class/.php');
+require('autoload.php');
 
-
-//MODEL
-//comme ca avec ma classe ca ne marche pas :
-include_once ('./class/Bdd.php');
+//1)MODEL
 $bdd = new Bdd();
-
-
+//si on créé un utilisateur, il aura pour id : l'id maximum des utilisateurs auquel on ajoute 1
 if (!isset($_SESSION['id']))
 {
     $max_id = $bdd->selectMaxId("utilisateur");
@@ -23,8 +19,12 @@ if (!isset($_SESSION['id']))
 }
 
 
-//CONTROLLER
-//echo "Session:";var_dump($_SESSION);
+//2)VIEW: aucune
+
+
+//3)CONTROLLER
+$user_edit = new UserController();
+echo "Session:";var_dump($_SESSION);
 
 $pseudo = $_SESSION['pseudo'];
 $password = $_SESSION['password'];
@@ -36,25 +36,8 @@ $id_statut = $_SESSION['statut'];
 if (isset($_SESSION['id']))
 {
     //Modification d'utilisateur
-
-    $id = $_SESSION['id'];
-
-    //créer la requête UPDATE
-    $sql_update_user = "
-    UPDATE Utilisateur
-    SET
-        pseudo ='$pseudo',
-        mail ='$mail',
-        mot_de_passe ='$password',
-        id_etat=$id_etat,
-        id_statut=$id_statut
-        WHERE id='$id'
-    ";
-    var_dump($sql_update_user);
-
-    //exécuter la requête UPDATE
-    $result = $bdd->executeQuery($sql_update_user);
-
+    $result = $user_edit->updateUser($bdd);
+    var_dump($result);
     if ($result ==1 ) {
         $_SESSION['message'] = "modification de l'utilisateur $pseudo effectuée";
     }
@@ -62,14 +45,8 @@ if (isset($_SESSION['id']))
 }else{
     //Création d'utilisateur
 
-    //créer la requête INSERT
-    $sql_insert_user = "
-    INSERT INTO utilisateur (id, pseudo, mail, mot_de_passe, id_etat, id_statut)
-    VALUES ($id, '$pseudo', '$mail', '$password', $id_etat, $id_statut)";
-    var_dump($sql_insert_user);
-
     //exécuter la requête INSERT
-    $result = $bdd->executeQuery($sql_insert_user);
+    $result = $user_edit->insertUser($bdd, $id);
 
     if ($result ==1 ) {
         $_SESSION['message'] = "création de l'utilisateur $pseudo effectuée";
@@ -77,4 +54,5 @@ if (isset($_SESSION['id']))
 }
 
 echo "resultat : ";  var_dump($_SESSION['message']);
-header('Location: user_list_controller.php');
+//header('Location: user_list_controller.php');
+echo "<script type='text/javascript'>document.location.replace('user_list_controller.php');</script>";
