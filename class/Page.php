@@ -165,4 +165,18 @@ class Page
         }
     }
 
+
+    public function checkRadio()
+    {
+        $_SESSION['sexe'] = $_POST['sexe'];
+        if ($_POST['sexe']=='H' or $_POST['sexe']=='F')
+        {
+            echo "Le champs sexe est vérifié<br>";
+            return true;
+        }else{
+            echo "Erreur champ sexe <br/>";
+            return false;
+        }
+    }
+
 }

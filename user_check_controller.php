@@ -9,11 +9,15 @@
  */
 
 session_start();
-include_once ('./class/User.php');
-$user_check = new User();
+require('autoload.php');
 
-echo "POST:";
-var_dump($_POST);
+//1)MODEL : aucun
+
+//2)VIEW: aucune
+
+//3)CONTROLLER
+$user_check = new UserController();
+
 
 //on vérifie tous les champs
 //champs text
@@ -30,4 +34,4 @@ $is_etat_verified = $user_check->checkEtat(4);
 $bool_fields = $is_pseudo_verified & $is_statut_verified & $is_mail_verified & $is_password_verified & $is_etat_verified;
 
 
-$user_check->traitement($bool_fields);
+$user_check->traitementFormulaire($bool_fields);

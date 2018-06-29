@@ -7,12 +7,8 @@
  * pour remplir les données du formulaire user_view.html
  */
 
-include_once ('./class/Page.php');
-include_once ('Bdd.php');
-$bdd = new Bdd();
-include_once ('template/header_jquery.html');
 
-class User extends Page
+class UserController extends Page
 {
     /**
      * User constructor.
@@ -124,7 +120,7 @@ class User extends Page
      * @param bool $bool_fields Opération "&" sur tous les boolens de vérification
      *      s'il vaut 1 c'est que tous les champs sont corrects
      */
-    public function traitement($bool_fields)
+    public function traitementFormulaire($bool_fields)
     {
         //Si tous les champs sont corrects
         if ($bool_fields)
@@ -134,15 +130,17 @@ class User extends Page
             if(isset($_SESSION['id'])){
                 //Modification
                 $_SESSION['message'] .= ", Modification";
-                echo "Session : ";var_dump($_SESSION);
+                //echo "Session : ";var_dump($_SESSION);
 
             }else{
                 //Creation
                 $_SESSION['message'] .= ", Création";
-                echo "Session : ";var_dump($_SESSION);
+                //echo "Session : ";var_dump($_SESSION);
             }
             //redirection pour l'INSERT ou l'UPDATE en base
-            header('Location: user_updatedb_controller.php');
+            //header('Location: user_updatedb_controller.php');
+            //redirection en javascript, car on ne peut pas faire header() si on a des données en SESSION
+            echo "<script type='text/javascript'>document.location.replace('user_updatedb_controller.php');</script>";
 
         }else{
             //si au moins un champ est incorrect
@@ -152,8 +150,47 @@ class User extends Page
             //echo $_SESSION['message'];
 
             //redirection vers le formulaire
-            header('Location: user_controller.php');
+            //header('Location: user_controller.php');
+            echo "<script type='text/javascript'>document.location.replace('user_controller.php');</script>";
         }
     }
 
+    public function updateUser($bdd)
+    {
+
+        //créer la requête UPDATE
+        $sql_update_user = "
+        UPDATE utilisateur
+        SET
+            pseudo ='".$_SESSION['pseudo']."',
+            mail ='".$_SESSION['mail']."',
+            mot_de_passe ='".$_SESSION['password']."',
+            id_etat=".$_SESSION['etat'].",
+            id_statut=".$_SESSION['statut']."
+            WHERE id=".$_SESSION['id']."
+        ";
+        echo "La requête de mise a jour va être jouée :"; var_dump($sql_update_user);
+
+        //exécuter la requête UPDATE
+        $result = $bdd->executeQuery($sql_update_user);
+
+        return $result;
+    }
+
+    public function insertUser($bdd, $id)
+    {
+        //Création d'utilisateur
+
+        //créer la requête INSERT
+        $sql_insert_user = "
+        INSERT INTO utilisateur (id, pseudo, mail, 
+        mot_de_passe, id_etat, id_statut)
+        VALUES ($id, '".$_SESSION['pseudo']."', '".$_SESSION['mail']. "' , '".$_SESSION['password']."' ,".$_SESSION['etat'].", ".$_SESSION['statut'].")
+            ";
+        var_dump($sql_insert_user);
+
+        //exécuter la requête INSERT
+        $result = $bdd->executeQuery($sql_insert_user);
+        return $result;
+    }
 }
