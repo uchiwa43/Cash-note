@@ -9,7 +9,7 @@
 
 session_start();
 require('autoload.php');
-var_dump($_SESSION);
+
 
 //1)MODEL :
 $bdd = new Bdd();
@@ -20,7 +20,6 @@ $statuts = $bdd->select('SELECT * FROM statut');
 
 //2)VIEW: chargement du template
 $page_user = new UserController('./template/user_view.html');
-
 
 
 //3)CONTROLLER
@@ -59,7 +58,6 @@ if(isset($_GET['id']))
     $page_user->setStatut($statuts, null);
     $page_user->setEtat($etats,null);
 }
-
 
 
 //4) Affichage :
