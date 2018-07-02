@@ -84,6 +84,15 @@ class Page
         }
     }
 
+    /**Pré-remplis le libellé par la valeur en session ou par la valeur donnée (valeur en base ou '')
+     * utilise le SetInputValue mais il est commun sur plusieurs modules donc autant le réutiliser
+     * @param $init_value
+     */
+    public function setLibelleValue($init_value)
+    {
+        $this->setInputValue("#libelle_value#", 'libelle', $init_value);
+    }
+
     /**Génère un select avec autant d'options que d'éléments dans l'array de données
      * et l'option a selected si on le récupère en base
      * @param array $array_sql Array de données(qui proviens de la requête sql)

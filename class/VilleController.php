@@ -39,14 +39,6 @@ class VilleController extends Page
     }
 
 
-    /**Pré-remplis le libellé par la valeur en session ou par la valeur donnée (valeur en base ou '')
-     * @param $init_value
-     */
-    public function setLibelleValue($init_value)
-    {
-        parent::setInputValue("#libelle_value#", 'libelle', $init_value);
-    }
-
     /**Met à jour la ville en base
      * @param $bdd
      * @return mixed
