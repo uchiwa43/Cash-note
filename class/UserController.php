@@ -97,7 +97,7 @@ class UserController extends Page
 
     public function checkEtat($limit)
     {
-        $is_statut_verified = parent::checkSelect('etat', $limit);
+        $is_statut_verified = parent::checkSelect('id_etat', $limit);
         return $is_statut_verified;
     }
 

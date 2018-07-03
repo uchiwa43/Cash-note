@@ -22,16 +22,9 @@ if (!isset($_SESSION['id']))
 //2)VIEW: aucune
 
 
+
 //3)CONTROLLER
 $user_edit = new UserController();
-echo "Session:";var_dump($_SESSION);
-
-$pseudo = $_SESSION['pseudo'];
-$password = $_SESSION['password'];
-$mail = $_SESSION['mail'];
-$id_etat = $_SESSION['etat'];
-$id_statut = $_SESSION['statut'];
-
 
 if (isset($_SESSION['id']))
 {
@@ -39,17 +32,16 @@ if (isset($_SESSION['id']))
     $result = $user_edit->updateUser($bdd);
     var_dump($result);
     if ($result ==1 ) {
-        $_SESSION['message'] = "Modification de l'utilisateur $pseudo effectuée";
+        $_SESSION['message'] = "Modification de l'utilisateur " . $_SESSION['pseudo'] . " effectuée";
     }
 
 }else{
     //Création d'utilisateur
-
     //exécuter la requête INSERT
     $result = $user_edit->insertUser($bdd, $id);
 
     if ($result ==1 ) {
-        $_SESSION['message'] = "Création de l'utilisateur $pseudo effectuée";
+        $_SESSION['message'] = "Création de l'utilisateur " . $_SESSION['pseudo'] . " effectuée";
     }
 }
 

@@ -9,16 +9,12 @@
 session_start();
 require('autoload.php');
 
-var_dump($_SESSION);var_dump($_POST);
-
-
 //1)MODEL
 $bdd = new Bdd();
 if (!isset($_SESSION['id']))
 {
     $max_id = $bdd->selectMaxId("site_internet");
     $id = $max_id+1;
-    echo "id : $id";
 }
 
 
