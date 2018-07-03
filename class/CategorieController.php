@@ -46,22 +46,14 @@ class CategorieController extends Page
      * @param $bdd
      * @return mixed
      */
-    public function updateLieu($bdd)
+    public function updateCategorie($bdd)
     {
-        if ($_POST['id_quartier']==0)
-        {
-            $string_id_quartier = 'NULL';
-        } else {
-            $string_id_quartier = $_POST['id_quartier'];
-        }
-
         //créer la requête UPDATE
         $sql_update_lieu = "
-        UPDATE lieu
+        UPDATE categorie
         SET
-            libelle ='".$_POST['libelle']."',
-            id_ville = ".$_POST['id_ville'].",
-            id_quartier = $string_id_quartier
+            libelle = '".$_POST['libelle']."',
+            id_type_categorie = ".$_POST['id_type_categorie']."
             WHERE id=".$_SESSION['id']."
         ";
         echo "La requête de mise a jour va être jouée :"; var_dump($sql_update_lieu);
