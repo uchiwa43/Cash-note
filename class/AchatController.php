@@ -40,7 +40,7 @@ class AchatController extends Page
             <tr>
                 <td><a href='achats_controller.php?id= ". $achats['id'] ."'>Modifier</a></td>
                 <td>". $achats['libelle'] ."</td>
-                <td>". $achats['id_categorie'] ."</td>
+                <td>". $achats['categorie'] ."</td>
                 <td>". $achats['etat'] ."</td>
                 <td>". $achats['prix_achat_reel'] ."<br/>". $achats['prix_achat_prevu'] ."</td>
                 <td>". $achats['moyen_payement'] ."</td>

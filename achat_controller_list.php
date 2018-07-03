@@ -57,20 +57,24 @@ foreach($achats_non_formates as $achat)
     }
 }
 $_SESSION['achats'] = $achats;
-
 //var_dump($achats);
+
+$test = file_get_contents('./template/achat_recherche.html');
+var_dump($test);//it works
+
+$message = $page_achat_list->getMessage();
+$page_achat_list->replaceBalise("#message#", $message);
+$page_achat_list->replaceBalise("#titre#", 'Liste des Achats');
+
+$page_achat_list->replaceBalise("#achat_recherche#", $test);
 
 $lignes_achat = $page_achat_list->remplirLignesAchats();
 $page_achat_list->replaceBalise("#lignes_achats#", $lignes_achat);
-
-
-$page_achat_list->replaceBalise("#titre#", 'Liste des Achats');
-$message = $page_achat_list->getMessage();
-$page_achat_list->replaceBalise("#message#", $message);
-
 
 
 //4) Affichage :
 echo $page_achat_list->getHtml();
 
 
+
+var_dump($_POST);

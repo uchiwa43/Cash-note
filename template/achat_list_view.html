@@ -12,7 +12,46 @@
 
 
     <div id="recherche" style="text-align:right">
-        <form>
+        <form method="POST">
+
+            #achat_recherche#
+
+            #categories#
+            <div id="bloc_categorie" style="display:inline-block;vertical-align:top;" >
+                <input type="checkbox" name="is_categorie"/>
+                <label>Categorie :</label><br/>
+                <select name="categorie">
+                    <option value="1">Obligatoire</option>
+                    <option value="2">Essence</option>
+                    <option value="3">Voiture</option>
+                    <option value="4">Manga</option>
+                    <option value="5">Ciné</option>
+                </select>
+            </div>
+
+            #types#
+            <div id="bloc_type" style="display:inline-block;vertical-align:top;" >
+                <input type="checkbox" name="is_type"/>
+                <label>Type :</label><br/>
+                <select name="type">
+                    <option value="1">Obligatoire</option>
+                    <option value="2">Loisir</option>
+                </select>
+            </div>
+
+            #lieu#
+            <div id="bloc_lieu" style="display:inline-block;vertical-align:top;">
+                <input type="checkbox" name="is_lieu"/>
+                <label>Lieu :</label><br/>
+                <select name="lieu">
+                    <option value="1">Centre 2 - Saint-Etienne</option>
+                    <option value="2">DBDH - Saint-Etienne</option>
+                </select>
+            </div>
+
+            <br/>
+
+            <input type="submit">
         </form>
     </div>
 
