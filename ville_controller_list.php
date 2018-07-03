@@ -45,6 +45,7 @@ $_SESSION['villes'] = $villes;
 $lignes_villes = $page_ville_list->remplirLignesVille();
 $page_ville_list->replaceBalise("#lignes_ville#", $lignes_villes);
 
+$page_ville_list->replaceBalise("#titre#", 'Liste des Villes');
 $message = $page_ville_list->getMessage();
 $page_ville_list->replaceBalise("#message#", $message);
 

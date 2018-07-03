@@ -9,8 +9,7 @@
 
 session_start();
 require('./autoload.php');
-include_once ('template/header_jquery.html');
-
+include('template/header_jquery.html');
 
 //Supprimer toutes les variables de $_SESSION sauf le message
 foreach($_SESSION as $var_session=>$value)
@@ -50,14 +49,15 @@ foreach($users_non_formates as $user)
         }
     }
 }
+//array formaté
 $_SESSION['users'] = $users;
 
-//var_dump($_SESSION);
 
 //remplacement des données
 $lignes_utilisateurs = $page_user_list->remplirLignesUtilisateurs($users);
 $page_user_list->replaceBalise("#lignes_utilisateurs#", $lignes_utilisateurs);
 
+$page_user_list->replaceBalise("#titre#", 'Liste des utilisateurs');
 $message = $page_user_list->getMessage();
 $page_user_list->replaceBalise("#message#", $message);
 

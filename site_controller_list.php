@@ -20,9 +20,10 @@ foreach($_SESSION as $var_session=>$value)
 }
 
 
-//1)MODEL : requête de selection des villes
+//1)MODEL : requête de selection des sites
 $bdd = new Bdd();
-$query =" SELECT s.id, s.libelle, s.url, s.id_etat, etat.libelle AS etat
+$query =" 
+SELECT s.id, s.libelle, s.url, s.id_etat, etat.libelle AS etat
 FROM site_internet s
 LEFT JOIN etat ON s.id_etat = etat.id
  ";
@@ -47,7 +48,6 @@ foreach($sites_non_formates as $site)
         }
     }
 }
-//array formaté
 $_SESSION['sites'] = $sites;
 
 
