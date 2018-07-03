@@ -49,5 +49,4 @@ if (isset($_SESSION['id'])) {
     }
 }
 echo "resultat : "; var_dump($_SESSION['message']);
-//header('Location: user_list_controller.php');
 echo "<script type='text/javascript'>document.location.replace('categorie_controller_list.php');</script>";
