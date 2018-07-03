@@ -51,10 +51,7 @@ class SiteController extends Page
         parent::setInputValue("#adresse_value#", 'url', $init_value);
     }
 
-    public function setEtat($etats, $id_etat)
-    {
-        parent::setSelect($etats,"Etats","id_etat","#etats#", $id_etat);
-    }
+    //setEtat : dans Page
 
 
 

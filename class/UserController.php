@@ -10,6 +10,7 @@
 
 class UserController extends Page
 {
+    //todo supprimer ca
     /**
      * User constructor.
      * @param string $html_template Chemin du template
@@ -41,16 +42,11 @@ class UserController extends Page
     //champs select
     //appelle setSelect en donnant des arguments fixes pour l'état et le statut
     // (pour avoir moins de paramètre dans le controller)
-    public function setEtat($etats, $id_etat)
-    {
-        parent::setSelect($etats,"Etat", "etat","#etats#", $id_etat);
-    }
-
     public function setStatut($statuts, $id_statut)
     {
         parent::setSelect($statuts,"Statut","statut","#statuts#", $id_statut);
     }
-
+    //setEtat : dans Page
 
     /**
      * remplit chaque ligne du tableau avec les informations de la table utilisateur
@@ -165,7 +161,7 @@ class UserController extends Page
             pseudo ='".$_SESSION['pseudo']."',
             mail ='".$_SESSION['mail']."',
             mot_de_passe ='".$_SESSION['password']."',
-            id_etat=".$_SESSION['etat'].",
+            id_etat=".$_SESSION['id_etat'].",
             id_statut=".$_SESSION['statut']."
             WHERE id=".$_SESSION['id']."
         ";

@@ -132,6 +132,16 @@ class Page
     }
 
     /**
+     * Créé une liste déroulante des états
+     * @param $etats
+     * @param $id_etat
+     */
+    public function setEtat($etats, $id_etat)
+    {
+        $this->setSelect($etats,"Etat", "id_etat","#etats#", $id_etat);
+    }
+
+    /**
      * Vérifie que les valeurs sont comprises entre 0 et 50 caractères (limite en base de données)
      * et que les balises soient échappées
      * @param string $name Nom du champs dans le formulaire

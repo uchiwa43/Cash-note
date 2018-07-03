@@ -14,7 +14,7 @@ require('autoload.php');
 //1)MODEL :
 $bdd = new Bdd();
 //requête de selection des etats et des statuts pour alimenter les listes déroulantes
-$etats = $bdd->select('SELECT * FROM etat');
+$etats = $bdd->select('SELECT * FROM etat WHERE id =1 OR ID =2');
 $statuts = $bdd->select('SELECT * FROM statut');
 
 
