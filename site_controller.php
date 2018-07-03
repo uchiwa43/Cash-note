@@ -8,7 +8,6 @@
 
 session_start();
 require('autoload.php');
-//var_dump($_SESSION['sites'][1]);
 
 
 //1)MODEL :
@@ -53,7 +52,6 @@ if(isset($_GET['id']))
     $page_site->setAdresseValue("");
     //champs select
     $page_site->setEtat($etats,null);
-
 }
 
 

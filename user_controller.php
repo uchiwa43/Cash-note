@@ -22,6 +22,7 @@ $statuts = $bdd->select('SELECT * FROM statut');
 $page_user = new UserController('./template/user_view.html');
 
 
+
 //3)CONTROLLER
 //remplacement des données
 $message = $page_user->getMessage();
