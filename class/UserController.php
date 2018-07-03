@@ -134,9 +134,8 @@ class UserController extends Page
                 //echo "Session : ";var_dump($_SESSION);
             }
             //redirection pour l'INSERT ou l'UPDATE en base
-            //header('Location: user_updatedb_controller.php');
             //redirection en javascript, car on ne peut pas faire header() si on a des données en SESSION
-            echo "<script type='text/javascript'>document.location.replace('user_updatedb_controller.php');</script>";
+            echo "<script type='text/javascript'>document.location.replace('user_controller_edit_db.php');</script>";
 
         }else{
             //si au moins un champ est incorrect
