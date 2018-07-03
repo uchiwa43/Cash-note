@@ -28,10 +28,10 @@ if(isset($_SESSION['message'])){
 $_SESSION['message']='';
 
 
-$lien = "<a href='user_list_controller.php?show_disabled=1'>Voir les utilisateurs désactivés</a><br/>";
+$lien = "<a href='user_controller_list.php?show_disabled=1'>Voir les utilisateurs désactivés</a><br/>";
 if(isset($_GET['show_disabled']) && $_GET['show_disabled']==1)
 {
-    $lien = "<a href='user_list_controller.php'>Voir les utilisateurs actifs</a><br/>";
+    $lien = "<a href='user_controller_list.php'>Voir les utilisateurs actifs</a><br/>";
 }
 
 

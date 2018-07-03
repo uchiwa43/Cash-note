@@ -39,7 +39,7 @@ if (isset($_SESSION['id']))
     $result = $user_edit->updateUser($bdd);
     var_dump($result);
     if ($result ==1 ) {
-        $_SESSION['message'] = "modification de l'utilisateur $pseudo effectuée";
+        $_SESSION['message'] = "Modification de l'utilisateur $pseudo effectuée";
     }
 
 }else{
@@ -49,10 +49,9 @@ if (isset($_SESSION['id']))
     $result = $user_edit->insertUser($bdd, $id);
 
     if ($result ==1 ) {
-        $_SESSION['message'] = "création de l'utilisateur $pseudo effectuée";
+        $_SESSION['message'] = "Création de l'utilisateur $pseudo effectuée";
     }
 }
 
 echo "resultat : ";  var_dump($_SESSION['message']);
-//header('Location: user_list_controller.php');
-echo "<script type='text/javascript'>document.location.replace('user_list_controller.php');</script>";
+echo "<script type='text/javascript'>document.location.replace('user_controller_list.php');</script>";
