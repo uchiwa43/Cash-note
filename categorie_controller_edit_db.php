@@ -31,7 +31,7 @@ $page_categorie_edit = new CategorieController();
 
 
 if (isset($_SESSION['id'])) {
-    $result = $page_categorie_edit->updateLieu($bdd);
+    $result = $page_categorie_edit->updateCategorie($bdd);
     var_dump($result);
     if ($result == 1) {
         $_SESSION['message'] = "Modification de la catégorie " . $_POST['libelle'] . " effectuée";
