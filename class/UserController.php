@@ -10,16 +10,6 @@
 
 class UserController extends Page
 {
-    //todo supprimer ca
-    /**
-     * User constructor.
-     * @param string $html_template Chemin du template
-     */
-    public function __construct($html_template='')
-    {
-        parent::__construct($html_template);
-    }
-
 
     //champs text
     //appelle setInputValue en donnant des arguments fixes pour le pseudo, le mail et le password
@@ -145,7 +135,6 @@ class UserController extends Page
             //echo $_SESSION['message'];
 
             //redirection vers le formulaire
-            //header('Location: user_controller.php');
             echo "<script type='text/javascript'>document.location.replace('user_controller.php');</script>";
         }
     }
