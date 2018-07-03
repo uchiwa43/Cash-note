@@ -8,11 +8,6 @@
 
 class VilleController extends Page
 {
-    public function __construct($html_template='')
-    {
-        parent::__construct($html_template);
-    }
-
 
     /**
      * remplit chaque ligne du tableau avec les informations de la table ville
