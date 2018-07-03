@@ -36,7 +36,7 @@ LEFT JOIN site_internet s ON a.id_site_internet = s.id
  ";
 
 $achats_non_formates = $bdd->select($query);
-var_dump($achats_non_formates);
+//var_dump($achats_non_formates);
 
 
 //2)VIEW: chargement du template
