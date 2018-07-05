@@ -1,12 +1,12 @@
 body{
-    /*background-color:yellow;*/
+    background-color:black;
     margin: 0;
     padding:0;
 }
 
 .bloc_menu {
     display: inline-block;
-    width: 49.7%;
+    width: 49.8%;
 
     color: white;
     font-family: "DejaVu Sans";
@@ -21,14 +21,14 @@ body{
     padding-bottom: 97px;
 }
 .color1{
-    background-color: green;
+    background-color: grey;
 }
 .color2 {
-    background-color: red;
+    background-color: darkgrey;
 
 }
 .color3{
-    background-color: blue;
+    background-color: dimgrey;
 }
 .color0{
     background-color: white;
