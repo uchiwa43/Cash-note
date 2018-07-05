@@ -35,6 +35,29 @@ body{
     color:black !important;
 }
 
+/**************************************/
+
+#connexion{
+    color: white;
+    margin: auto;
+    width: 700px;
+    text-align: center;
+}
+
+#connexion table{
+    width: 300px;
+    margin: auto;
+    text-align: left;
+}
+
+#connexion a{
+    color: white;
+}
+
+#connexion a:hover{
+    color: blue;
+}
+
 /****************************************/
 .bloc_mois{
     display: inline-block;
