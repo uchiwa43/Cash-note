@@ -6,4 +6,4 @@
  * Description:
  */
 
-header('Location: ./template/menu_main.html');
+header('Location: ./template/index.html');
