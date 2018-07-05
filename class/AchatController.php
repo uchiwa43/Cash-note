@@ -113,4 +113,20 @@ class AchatController extends Page
         }
         return $str_site;
     }
+
+
+    public function setTypes($types_categorie)
+    {
+        parent::setSelect($types_categorie,"Type","id_type_categorie","#types#",null );
+    }
+
+    public function setLieux($lieu )
+    {
+        parent::setSelect($lieu,"Lieu","id_lieu","#lieux#", null);
+    }
+
+    public function setCategories($categories)
+    {
+        parent::setSelect($categories,"Categorie","id_categorie","#categories#",null );
+    }
 }

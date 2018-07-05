@@ -36,9 +36,18 @@ JOIN moyen_payement mp ON a.id_moyen_payement = mp.id
 JOIN lieu l ON a.id_lieu = l.id
 LEFT JOIN site_internet s ON a.id_site_internet = s.id
  ";
-
 $achats_non_formates = $bdd->select($query);
-//var_dump($achats_non_formates);
+
+$query_categories="SELECT * from categorie";
+$categories = $bdd->select($query_categories);
+
+$query_types="SELECT * from type_categorie";
+$types_categories = $bdd->select($query_types);
+
+$query_lieux="SELECT * from lieu";
+$lieux = $bdd->select($query_lieux);
+
+
 
 
 //2)VIEW: chargement du template
@@ -69,6 +78,11 @@ $page_achat_list->replaceBalise("#message#", $message);
 $page_achat_list->replaceBalise("#titre#", 'Liste des Achats');
 
 $page_achat_list->replaceBalise("#achat_recherche#", $test);
+$page_achat_list->setCategories($categories);
+$page_achat_list->setTypes($types_categories);
+$page_achat_list->setLieux($lieux);
+$page_achat_list->replaceBalise("<select","<br/><select");
+$page_achat_list->replaceBalise("</select><br/><br/>","</select>");
 
 $lignes_achat = $page_achat_list->remplirLignesAchats();
 $page_achat_list->replaceBalise("#lignes_achats#", $lignes_achat);
