@@ -19,38 +19,98 @@ class AchatController extends Page
         //lignes tr du tableau
         $lignes_achats = "";
 
-        foreach ($_SESSION['achats'] as $achats) {
+        foreach ($_SESSION['achats'] as $achat)
+        {
+            //traitements spécifiques sur les cases
+            $str_prix = $this->setColorForPrix($achat);
+            $str_date_achat = $this->setColorForDateDAchat($achat);
+            $str_site = $this->setLinkForSite($achat);
 
-            //traitement spécifique sur l'url produit
-            $string_site = $achats['site'];
-            if(!is_null($achats['url_produit']))
-            {
-                $string_site = "<a href='".$achats['url_produit']."' target='_blank'>".$achats['site']."</a>";
-            }
-            else
-            {
-                if (!is_null($achats['url_site']))
-                {
-                    $string_site = "<a href='".$achats['url_site']."' target='_blank'>".$achats['site']."</a>";
-                }
-            }
+            //si moyen de payement ==liquide pas de date de débit
+            $str_date_debit = ($achat['id_moyen_payement']==2)? '' : $achat['date_debit'] ;
 
             //créer une ligne pour un utilisateur
             $lignes_achats .= "
             <tr>
-                <td><a href='achats_controller.php?id= ". $achats['id'] ."'>Modifier</a></td>
-                <td>". $achats['libelle'] ."</td>
-                <td>". $achats['categorie'] ."</td>
-                <td>". $achats['etat'] ."</td>
-                <td>". $achats['prix_achat_reel'] ."<br/>". $achats['prix_achat_prevu'] ."</td>
-                <td>". $achats['moyen_payement'] ."</td>
-                <td>". $achats['date_achat_reelle'] ."</td>
-                <td>". $achats['lieu'] ."</td>
-                <td>". $string_site ."</td>";
+                <td><a href='achats_controller.php?id= ". $achat['id'] ."'>Modifier</a></td>
+                <td>". $achat['libelle'] ."</td>
+                <td>". $achat['categorie'] ."</td>
+                <td>". $achat['etat'] ."</td>
+                <td>". $str_prix ."</td>
+                <td>". $achat['moyen_payement'] ."</td>
+                <td>". $str_date_achat ."<br/>". $str_date_debit ."</td>
+                <td>". $achat['lieu'] ."</td>
+                <td>". $str_site ."</td>";
             $lignes_achats .= "
             </tr>";
         }
         return $lignes_achats;
     }
 
+    /**
+     * @param $achat
+     * @return string
+     */
+    public function setColorForPrix($achat)
+    {
+        $str_prix = $achat['prix_achat_reel'] ."<br/>". $achat['prix_achat_prevu'];
+
+        if($achat['prix_achat_prevu']!=null AND $achat['prix_achat_reel']!=null)
+        {
+            if ($achat['prix_achat_reel'] > $achat['prix_achat_prevu'])
+            {
+                $str_prix = "<span style = 'color: red'>".$str_prix."</span>";
+            }
+            if ($achat['prix_achat_reel'] < $achat['prix_achat_prevu'])
+            {
+                $str_prix = "<span style = 'color: green'>".$str_prix."</span>";
+            }
+        }
+        return $str_prix;
+    }
+
+    /**
+     * @param $achat
+     * @return string
+     */
+    public function setColorForDateDAchat($achat)
+    {
+        $str_date_achat = $achat['date_achat_reelle'];
+
+        //traitement spécifique sur la date d'achat
+        if($achat['date_achat_reelle']!=null AND $achat['date_achat_prevue_debut']!=null AND $achat['date_achat_prevue_fin']!=null)
+        {
+            if($achat['date_achat_reelle'] < $achat['date_achat_prevue_debut'])
+            {
+                $str_date_achat = "<span style = 'color: green'>". $str_date_achat ."</span>";
+            }
+            if($achat['date_achat_reelle'] > $achat['date_achat_prevue_fin'])
+            {
+                $str_date_achat = "<span style = 'color: red'>". $str_date_achat ."</span>";
+            }
+        }
+        return $str_date_achat;
+    }
+
+    /**
+     * @param $achat
+     * @return string
+     */
+    public function setLinkForSite($achat)
+    {
+        $str_site = $achat['site'];
+
+        if(!is_null($achat['url_produit']))
+        {
+            $str_site = "<a href='".$achat['url_produit']."' target='_blank'>".$achat['site']."</a>";
+        }
+        else
+        {
+            if (!is_null($achat['url_site']))
+            {
+                $str_site = "<a href='".$achat['url_site']."' target='_blank'>".$achat['site']."</a>";
+            }
+        }
+        return $str_site;
+    }
 }

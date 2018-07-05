@@ -23,8 +23,10 @@ foreach($_SESSION as $var_session=>$value)
 //1)MODEL : requête de selection des achats
 $bdd = new Bdd();
 
+
 $query =" 
-SELECT a.id, a.libelle, prix_achat_reel, prix_achat_prevu, date_achat_reelle, 
+SELECT a.id, a.libelle, prix_achat_reel, prix_achat_prevu, 
+date_achat_reelle, date_achat_prevue_debut, date_achat_prevue_fin,date_debit,
 a.id_etat, e.libelle AS etat, id_categorie, c.libelle AS categorie, id_moyen_payement, mp.libelle AS moyen_payement,
 id_lieu, l.libelle as lieu , id_site_internet, s.libelle AS site, s.url AS url_site, a.url_produit
 FROM achat a
@@ -60,7 +62,7 @@ $_SESSION['achats'] = $achats;
 //var_dump($achats);
 
 $test = file_get_contents('./template/achat_recherche.html');
-var_dump($test);//it works
+//var_dump($test);//it works
 
 $message = $page_achat_list->getMessage();
 $page_achat_list->replaceBalise("#message#", $message);
