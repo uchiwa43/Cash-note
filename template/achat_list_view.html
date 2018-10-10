@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="FR">
+<head>
+    <meta charset="UTF-8">
+    <title>#titre#</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+
+<body>
+
+    <h1>#titre#</h1>
+
+
+    <div id="recherche" style="text-align:right">
+        <form method="POST">
+
+            #achat_recherche#
+
+
+            <div id="bloc_categorie" style="display:inline-block;vertical-align:top;" >
+                <input type="checkbox" name="is_categorie"/>
+                #categories#
+            </div>
+
+
+            <div id="bloc_type" style="display:inline-block;vertical-align:top;" >
+                <input type="checkbox" name="is_type"/>
+                #types#
+            </div>
+
+
+            <div id="bloc_lieu" style="display:inline-block;vertical-align:top;">
+                <input type="checkbox" name="is_lieu"/>
+                #lieux#
+            </div>
+
+            <br/>
+
+            <input type="submit">
+        </form>
+    </div>
+
+    <div id="donnees">
+
+        <div id="total" style="display:inline-block;">Total : 430€ </div>
+
+        <div id="boutons_ajout" style="display:inline-block;">
+            <a href="achat.html">Ajout Achat</a><br>
+            <a href="achat_rapide.html">Ajout rapide</a>
+        </div>
+        <br>
+
+        <table id="table_id" class="display">
+            <thead>
+            <td></td>
+            <td>Libelle</td>
+            <td>Catégorie</td>
+            <td>Etat</td>
+            <td>Prix Réel/<br/>Prix Prévu</td>
+            <td>Moyen de<br/>payement</td>
+            <td>Date d'achat<br/>Date de débit</td>
+            <td>Lieu</td>
+            <td>Achat sur<br/>internet</td>
+            </thead>
+
+            <tbody>
+            #lignes_achats#
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+</html>
